@@ -66,14 +66,3 @@ def start_game():
 
 start_game()
 
-
-"""
-updateScore(players)
-    for player in players:
-        print(player.name,"'s score: ",player.score)
-
-
-def listPlayers(players):
-    for player in players:
-        print(player.name)
-"""
