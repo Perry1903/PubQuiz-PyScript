@@ -5,7 +5,13 @@ class Player:
 
 def create_players():
     players = []
-    num_players = int(input("Please enter the number of players/teams: "))
+    while True:
+        try:
+            num_players = int(input("Please enter the number of players/teams: "))
+        except:
+            continue
+        else:
+            break
 
     i = 0
     while i < num_players:
@@ -18,8 +24,14 @@ def create_players():
 
 def update_score(players):
     for player in players:
-        score = float(input("Enter score for {}: ".format(player.name)))
-        player.score += score
+        while True:
+            try:
+                score = float(input("Enter score for {}: ".format(player.name)))
+                player.score += score
+            except:
+                pass
+            else:
+                break
     
     print("\n")
     print_scores(players)
@@ -53,16 +65,29 @@ def new_round(i, rounds, players):
 
 def start_game():
     players = create_players()
-    rounds = int(input("Enter number of rounds: "))
-    i = 1
+    while True:
+        try:
+            rounds = int(input("Enter number of rounds: "))
+        except:
+            pass
+        else:
+            break
 
+    i = 1
     while i < rounds+1:
         new_round(i, rounds, players)
         i+= 1
 
     print("Quiz finished")
-    exit()
-        
+
+    while True:
+        choice = input("Would you like to play again? (y/n): \n")
+        if choice == 'y':
+            start_game()
+        elif choice == 'n':
+            exit()
+        else:
+            pass
 
 start_game()
 
